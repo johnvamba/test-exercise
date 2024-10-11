@@ -12,9 +12,11 @@ class Opportunities extends Component
     
     public $perPage = 20; // Default number of items per page  
 
+    public $textQuery = "";
+
     public $options = [20, 50, 100, 250]; // Options for items per page 
     
-    protected $queryString = ['perPage']; // Keep perPage in the URL 
+    protected $queryString = ['perPage', 'textQuery']; // Keep perPage in the URL 
     
     public function updatingPerPage() 
     {
@@ -23,8 +25,11 @@ class Opportunities extends Component
 
     public function render()
     {
-        $items = Item::paginate($this->perPage); 
-
+        $textQuery = $this->textQuery;
+        $items = Item::when($this->textQuery != "", function($query) use ($textQuery){
+                $query->where('name', 'like', "%". $textQuery ."%");
+            })->paginate($this->perPage); 
+        // dd($textQuery, $items->all());
         return view('livewire.opportunities', [ 
             'items' => $items 
         ]); 

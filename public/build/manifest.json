@@ -1,0 +1,13 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-Dm8uOHjk.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-DL_q1Xoz.js",
+    "name": "bootstrap",
+    "src": "resources/js/bootstrap.js",
+    "isEntry": true
+  }
+}

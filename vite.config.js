@@ -5,7 +5,7 @@ export default defineConfig({
     plugins: [
         laravel([
             'resources/css/app.css',
-            'resources/js/app.js',
+            'resources/js/bootstrap.js',
         ]),
     ],
     // Hosted by wsl
