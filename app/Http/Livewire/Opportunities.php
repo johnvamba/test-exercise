@@ -27,9 +27,10 @@ class Opportunities extends Component
     {
         $textQuery = $this->textQuery;
         $items = Item::when($this->textQuery != "", function($query) use ($textQuery){
-                $query->where('name', 'like', "%". $textQuery ."%");
+                $query->where('name', 'like', "%". $textQuery ."%")
+                    ->orWhere('name', '=', $textQuery);
             })->paginate($this->perPage); 
-        // dd($textQuery, $items->all());
+
         return view('livewire.opportunities', [ 
             'items' => $items 
         ]); 
